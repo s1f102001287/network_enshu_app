@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>detail</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
+  </head>
+  <body>
+    <h1>7ch</h1>
+    <div class="aaa">
+      <small>{{ article.posted_at }}</small>
+      <div>タイトル名：{{ article.title }}</div>
+      <div>
+          投稿内容　：{{ article.body | linebreaksbr }}
+      </div>
+    </div>
+    <br>
+    <p><a href="{% url 'index' %}" class="btn-border-bottom">back</a></p>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+<form action="{% url'index'%}"method="post">
+{% csrf_token %}
+<div>
+    <label for "titleInput">Title</label>
+    <input id = "titleInput"name="title"type="text">
+
+</div>
+<div>
+    <label for "textInput">Body</label>
+    <textarea id="textInput"name="text" rows="3"></textarea>
+</div>

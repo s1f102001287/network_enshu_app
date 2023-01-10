@@ -1,0 +1,26 @@
+{% load static %}
+<html>
+<head><meta charset="utf-8">
+  <title>Home</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/seven_ch.css' %}">
+</head>
+  <body>
+    <center><h1 class="box3">7ch</h1></center>
+    <h2>Home</h2>
+    {% if user.is_authenticated %}
+    <center><p>Hi {{ user.username }}!</p></center>
+    <center><a href="{% url 'logout' %}" class="btn-square">logout</a></center>
+    {% else %}
+    <center><p>You are not logged in.</p></center>
+    <center><a href="{% url 'login' %}" class="btn-square">login</a></center>
+    {% endif %}
+
+    <hr>
+    <center><table>
+      <tr>
+        <td><a href="{% url 'priv' %}" class="btn-border-bottom">priv</a></td>
+        <td><a href="{% url 'pub' %}" class="btn-border-bottom">public</a></td>
+      </tr>
+    </table></center>
+</body>
+</html>

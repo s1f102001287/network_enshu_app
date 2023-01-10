@@ -1,0 +1,50 @@
+{% load static %} 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+  </head>
+  <body>
+    <h1>7ch</h1>
+    <p class="Public">Public Page</p>
+    <p>思ったこと感じたことをつぶやいてみましょう</p>
+    <center>
+    <form action="{% url 'index' %}" method="post">
+      {% csrf_token %}
+      <div>
+        <label class="title" for="titleInput">タイトル</label>
+      </div>
+      <div>
+        <input id="titleInput" name="title" type="text" placeholder="タイトルを入力してください">
+      </div>
+      <div>
+        <label class="title" for="textInput">投稿内容</label>
+      </div>
+      <div>
+        <textarea id="textInput" name="text" rows="5" placeholder="今日はどんな出来事がありましたか？"></textarea>
+      </div>
+      <div>
+        <button class="btn-square" type="submit">Submit</button>
+      </div>
+    </form>
+
+    <br>
+    </center>
+    <a href="http://127.0.0.1:8000/seven_ch/" class="btn-border-bottom">home</a>
+    <br>
+    <center>
+    {% for article in articles %}
+    <br>
+    <small>{{ article.posted_at }}</small>
+    <br>
+    <a href="{% url 'detail' article.id %}">{{ article.title }}</a>
+    <br>
+    <dev>
+      {{ article.body | linebreaksbr}}
+    </dev>
+    {% endfor %}
+    </center>
+
+  </body>
+</html>
